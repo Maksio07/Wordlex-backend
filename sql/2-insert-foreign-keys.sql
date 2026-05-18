@@ -1,0 +1,19 @@
+-- ALTER TABLE languages ADD user_id INT;
+-- ALTER TABLE languages ADD FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
+
+-- ALTER TABLE topics ADD user_id INT;
+-- ALTER TABLE topics ADD FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE;
+-- ALTER TABLE topics ADD language_id INT;
+-- ALTER TABLE topics ADD FOREIGN KEY(language_id) REFERENCES languages(id) ON DELETE CASCADE;
+
+-- ALTER TABLE words ADD user_id INT;
+-- ALTER TABLE words ADD FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE;
+-- ALTER TABLE words ADD language_id INT;
+-- ALTER TABLE words ADD FOREIGN KEY (language_id) REFERENCES languages(id) ON DELETE CASCADE;
+-- ALTER TABLE words ADD topic_id INT;
+-- ALTER TABLE words ADD FOREIGN KEY (topic_id) REFERENCES topics(id) ON DELETE CASCADE;
+
+-- ALTER TABLE words MODIFY COLUMN word_img_path VARCHAR(2000) DEFAULT NULL; 
+-- ALTER TABLE words MODIFY COLUMN word_example TEXT DEFAULT NULL; 
+-- ALTER TABLE words ADD word_id VARCHAR(300) NOT NULL
+-- ALTER TABLE words ADD date_created DATE DEFAULT (CURRENT_DATE);
