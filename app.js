@@ -17,12 +17,24 @@ const connectionOptions = {
 	password: DBPass,
 }
 
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://192.168.0.10:3000',
+  'https://wordlexapp.netlify.app'
+];
+
 app.use(
-	cors({
-		origin: ['http://192.168.0.10:3000', 'http://localhost:3000', 'https://wordlexapp.netlify.app'],
-		credentials: true,
-	})
-)
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error('Zablokowane przez CORS'));
+      }
+    },
+    credentials: true,
+  })
+);
 
 const connection = mysql.createPool(connectionOptions)
 const sessionStore = new MySQLStore({}, connection)
@@ -41,8 +53,10 @@ app.use(
 		cookie: {
 			maxAge: 24 * 60 * 60 * 1000,
 			httpOnly: true,
-			secure: false,
-			sameSite: 'lax',
+			// secure: false,
+			// sameSite: 'lax',
+			secure: true,
+			sameSite: 'none',
 		},
 	})
 )
