@@ -25,8 +25,6 @@ const allowedOrigins = ['https://wordlexapp.netlify.app', 'http://localhost:3000
 app.use(
 	cors({
 		origin: function (origin, callback) {
-			console.log('CORS Origin próbujący się połączyć:', origin)
-
 			if (!origin || allowedOrigins.includes(origin)) {
 				callback(null, true)
 			} else {
@@ -34,8 +32,6 @@ app.use(
 			}
 		},
 		credentials: true,
-		methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-		allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'CSRF-Token', 'xsrf-token'],
 	})
 )
 
@@ -76,7 +72,7 @@ const wordsRouter = require('./routes/words')
 const settingsRouter = require('./routes/settings')
 const adminRouter = require('./routes/admin')
 
-app.options(cors());
+app.options(cors())
 
 app.use('/', authRoutes)
 app.use('/profile', isAuth, languagesRouter)
