@@ -36,7 +36,7 @@ app.use(
 	})
 )
 
-app.options('*', cors())
+app.options('(.*)', cors());
 
 const connection = mysql.createPool(connectionOptions)
 const sessionStore = new MySQLStore({}, connection)
