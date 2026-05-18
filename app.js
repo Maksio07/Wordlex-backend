@@ -19,7 +19,7 @@ const connectionOptions = {
 
 app.use(
 	cors({
-		origin: ['http://192.168.0.10:3000', 'http://localhost:3000'],
+		origin: ['http://192.168.0.10:3000', 'http://localhost:3000', 'https://wordlexapp.netlify.app'],
 		credentials: true,
 	})
 )
