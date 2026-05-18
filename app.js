@@ -13,7 +13,7 @@ const app = express()
 const connectionOptions = {
 	host: DBHost,
 	user: DBUser,
-	database: 'wordlex',
+	database: 'defaultdb',
 	password: DBPass,
 }
 
