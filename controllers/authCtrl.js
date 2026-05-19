@@ -38,12 +38,11 @@ exports.signup = async (req, res, next) => {
 			keyword: user.user_keyword,
 		})
 	} catch (err) {
-		console.log(err);
-		// res.status(500).json({
-		// 	status: 'error',
-		// 	code: 500,
-		// 	message: 'Coś poszło nie tak, spróbuj ponownie.',
-		// })
+		res.status(500).json({
+			status: 'error',
+			code: 500,
+			message: 'Coś poszło nie tak, spróbuj ponownie.',
+		})
 	}
 }
 

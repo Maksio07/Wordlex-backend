@@ -81,8 +81,6 @@ app.use('/profile', isAuth, topicsRouter)
 app.use('/profile', isAuth, wordsRouter)
 
 app.use((err, req, res, next) => {
-	console.log("!!! WYKRYTO BŁĄD NA BACKENDZIE !!!:", err);
-	console.log('Response answer:', res);
 	if (err.code === 'EBADCSRFTOKEN') {
 		return res.status(403).json({
 			status: 'error',
