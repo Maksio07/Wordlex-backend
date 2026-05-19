@@ -25,7 +25,6 @@ const allowedOrigins = ['https://wordlexapp.netlify.app', 'http://localhost:3000
 app.use(
 	cors({
 		origin: function (origin, callback) {
-			console.log('CORS Origin próbujący się połączyć:', origin)
 			if (!origin || allowedOrigins.includes(origin)) {
 				callback(null, true)
 			} else {
