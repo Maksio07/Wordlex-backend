@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const { PORT, DBUser, DBPass, DBHost, DBName } = require('./config/index')
+const { PORT, DBUser, DBPass, DBHost, DBName, DBPort } = require('./config/index')
 const session = require('express-session')
 const mysql = require('mysql2/promise')
 const MySQLStore = require('express-mysql-session')(session)
@@ -15,6 +15,7 @@ const connectionOptions = {
 	user: DBUser,
 	database: DBName,
 	password: DBPass,
+	port: DBPort || 3306,
 	ssl: {
 		rejectUnauthorized: false,
 	},
