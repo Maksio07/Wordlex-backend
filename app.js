@@ -9,6 +9,7 @@ const cors = require('cors')
 const isAuth = require('./middleware/is-auth')
 
 const app = express()
+app.set('trust proxy', 1);
 
 const connectionOptions = {
 	host: DBHost,
