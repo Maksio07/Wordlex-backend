@@ -9,7 +9,7 @@ const cors = require('cors')
 const isAuth = require('./middleware/is-auth')
 
 const app = express()
-app.set('trust proxy', 1);
+app.set('trust proxy', 1)
 
 const connectionOptions = {
 	host: DBHost,
@@ -26,14 +26,10 @@ const allowedOrigins = ['https://wordlexapp.netlify.app', 'http://localhost:3000
 
 app.use(
 	cors({
-		origin: function (origin, callback) {
-			if (!origin || allowedOrigins.includes(origin)) {
-				callback(null, true)
-			} else {
-				callback(new Error('Zablokowane przez CORS'))
-			}
-		},
+		origin: 'https://wordlexapp.netlify.app',
 		credentials: true,
+		allowedHeaders: ['Content-Type', 'csrf-token', 'CSRF-Token', 'Authorization'],
+		methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
 	})
 )
 
