@@ -18,7 +18,7 @@ exports.getUserLanguages = async (req, res, next) => {
 
 		res.status(201).json({
 			status: 'success',
-			languages: userLanguages[0],
+			languages: userLanguages[0].filter(item => item.id !== null),
 			userName: user[0][0].user_name,
 			message: `Dodane języki pzrez ${user[0][0].user_name} pobrane.`,
 		})
